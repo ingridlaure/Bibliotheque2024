@@ -2,6 +2,7 @@ package Biblio.Metier;
 
 import javax.sound.sampled.Port;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Ouvrage {
@@ -12,8 +13,8 @@ public abstract class Ouvrage {
     protected double prixLocation;
     protected String langue;
     protected String genre;
-    protected List<Exemplaire> listeExemplaires;
-    protected List<Auteur> listeAuteurs;
+    protected List<Exemplaire> listeExemplaires=new ArrayList<>();
+    protected List<Auteur> listeAuteurs=new ArrayList<>();
 
     public Ouvrage(String titre, int ageMin, LocalDate dateParution, TypeOuvrage typeOuvrage, double prixLocation, String langue, String genre) {
         this.titre = titre;
@@ -23,6 +24,21 @@ public abstract class Ouvrage {
         this.prixLocation = prixLocation;
         this.langue = langue;
         this.genre = genre;
+    }
+
+    @Override
+    public String toString() {
+        return "Ouvrage{" +
+                "titre='" + titre + '\'' +
+                ", ageMin=" + ageMin +
+                ", dateParution=" + dateParution +
+                ", typeOuvrage=" + typeOuvrage +
+                ", prixLocation=" + prixLocation +
+                ", langue='" + langue + '\'' +
+                ", genre='" + genre + '\'' +
+                ", listeExemplaires=" + listeExemplaires +
+                ", listeAuteurs=" + listeAuteurs +
+                '}';
     }
 
     public String getTitre() {

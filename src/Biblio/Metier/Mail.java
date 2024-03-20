@@ -13,6 +13,15 @@ public class Mail {
         this.dateEnvoi = dateEnvoi;
     }
 
+    @Override
+    public String toString() {
+        return "Mail{" +
+                "objet='" + objet + '\'' +
+                ", message='" + message + '\'' +
+                ", dateEnvoi=" + dateEnvoi +
+                '}';
+    }
+
     public String getObjet() {
         return objet;
     }

@@ -9,12 +9,22 @@ public class Location {
     private Exemplaire exemplaire;
     private Lecteur lecteur;
 
-    public Location(LocalDate dateLoc, LocalDate dateRestitution, Double amende, Exemplaire exemplaire, Lecteur lecteur) {
+    public Location(LocalDate dateLoc, LocalDate dateRestitution,Lecteur lecteur, Exemplaire exemplaire) {
         this.dateLoc = dateLoc;
         this.dateRestitution = dateRestitution;
-        this.amende = amende;
         this.exemplaire = exemplaire;
         this.lecteur = lecteur;
+    }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "dateLoc=" + dateLoc +
+                ", dateRestitution=" + dateRestitution +
+                ", amende=" + amende +
+                ", exemplaire=" + exemplaire +
+                ", lecteur=" + lecteur +
+                '}';
     }
 
     public LocalDate getDateLoc() {

@@ -9,10 +9,19 @@ public class CD extends Ouvrage{
     private Byte nbrePlages;
     private LocalTime dureeTotale;
     public CD(String titre, Byte ageMin, LocalDate dateParution, TypeOuvrage typeOuvrage, double prixLocation, String langue, String genre, List<Exemplaire> listeExemplaires, List<Auteur> listeAuteurs,long code, Byte nbrePlages, LocalTime dureeTotale) {
-        super(titre, ageMin, dateParution, typeOuvrage, prixLocation, langue, genre, listeExemplaires, listeAuteurs);
+        super(titre, ageMin, dateParution, typeOuvrage, prixLocation, langue, genre);
         this.code = code;
         this.nbrePlages = nbrePlages;
         this.dureeTotale = dureeTotale;
+    }
+
+    @Override
+    public String toString() {
+        return "CD{" +
+                "code=" + code +
+                ", nbrePlages=" + nbrePlages +
+                ", dureeTotale=" + dureeTotale +
+                '}';
     }
 
     public long getCode() {
@@ -38,6 +47,7 @@ public class CD extends Ouvrage{
     public void setDureeTotale(LocalTime dureeTotale) {
         this.dureeTotale = dureeTotale;
     }
+
 
     public double amendeRetard(int njours){return 2;}
 

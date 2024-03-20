@@ -2,6 +2,7 @@ package Biblio.Metier;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DVD extends Ouvrage {
@@ -9,15 +10,26 @@ public class DVD extends Ouvrage {
     private LocalTime dureeTotale;
     private Byte nbreBonus;
     List<String> autresLangues;
-    List<String> sousTitres;
+    List<String> sousTitres=new ArrayList<>();
 
     public DVD(String titre, Byte ageMin, LocalDate dateParution, TypeOuvrage typeOuvrage, double prixLocation, String langue, String genre, List<Exemplaire> listeExemplaires, List<Auteur> listeAuteurs, long code, LocalTime dureeTotale, Byte nbreBonus, List<String> autresLangues, List<String> sousTitres) {
-        super(titre, ageMin, dateParution, typeOuvrage, prixLocation, langue, genre, listeExemplaires, listeAuteurs);
+        super(titre, ageMin, dateParution, typeOuvrage, prixLocation, langue, genre);
         this.code = code;
         this.dureeTotale = dureeTotale;
         this.nbreBonus = nbreBonus;
         this.autresLangues = autresLangues;
         this.sousTitres = sousTitres;
+    }
+
+    @Override
+    public String toString() {
+        return "DVD{" +
+                "code=" + code +
+                ", dureeTotale=" + dureeTotale +
+                ", nbreBonus=" + nbreBonus +
+                ", autresLangues=" + autresLangues +
+                ", sousTitres=" + sousTitres +
+                '}';
     }
 
     public long getCode() {

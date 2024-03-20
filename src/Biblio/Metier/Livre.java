@@ -17,6 +17,17 @@ public class Livre extends Ouvrage{
         this.resume = resume;
     }
 
+    @Override
+    public String toString() {
+        return super.toString()
+                +
+                "isbn='" + isbn + '\'' +
+                ", nombresPages=" + nombresPages +
+                ", typeLivre=" + typeLivre +
+                ", resume='" + resume + '\'' +
+                '}';
+    }
+
     public String getIsbn() {
         return isbn;
     }

@@ -1,20 +1,30 @@
 package Biblio.Metier;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Exemplaire {
     private String matricule;
     private String descriptionEtat;
     private Rayon rayon;
-    private List<Location> listeLocations;
+    private List<Location> listeLocations=new ArrayList<>();
     private Ouvrage ouvrage;
 
-    public Exemplaire(String matricule, String descriptionEtat, Rayon rayon, List<Location> listeLocations, Ouvrage ouvrage) {
+    public Exemplaire(String matricule, String descriptionEtat,Ouvrage ouvrage) {
         this.matricule = matricule;
         this.descriptionEtat = descriptionEtat;
-        this.rayon = rayon;
-        this.listeLocations = listeLocations;
         this.ouvrage = ouvrage;
+    }
+
+    @Override
+    public String toString() {
+        return "Exemplaire{" +
+                "matricule='" + matricule + '\'' +
+                ", descriptionEtat='" + descriptionEtat + '\'' +
+                ", rayon=" + rayon +
+                ", listeLocations=" + listeLocations +
+                ", ouvrage=" + ouvrage +
+                '}';
     }
 
     public String getMatricule() {

@@ -56,4 +56,13 @@ public class Auteur {
     public void listerOuvrages(String genre){
 
     }
+
+    @Override
+    public String toString() {
+        return "Auteur{" +
+                "nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", nationalite='" + nationalite + '\'' +
+                '}';
+    }
 }

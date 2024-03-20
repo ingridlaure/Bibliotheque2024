@@ -1,5 +1,6 @@
 package Biblio.Metier;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,21 +9,33 @@ public class Lecteur {
     private Long numLecteur;
     private String nom;
     private String prenom;
-    private Location dateNaiss;
+    private LocalDate dateNaiss;
     private String mail;
     private String adresse;
     private String tel;
     private List<Location> listeLocation=new ArrayList<>();
 
-    public Lecteur(Long numLecteur, String nom, String prenom, Location dateNaiss, String mail, String adresse, String tel, List<Location> listeLocation) {
-        this.numLecteur = numLecteur;
+    public Lecteur(String nom, String prenom, LocalDate dateNaiss, String adresse, String mail, String tel) {
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaiss = dateNaiss;
         this.mail = mail;
         this.adresse = adresse;
         this.tel = tel;
-        this.listeLocation = listeLocation;
+    }
+
+    @Override
+    public String toString() {
+        return "Lecteur{" +
+                "numLecteur=" + numLecteur +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", dateNaiss=" + dateNaiss +
+                ", mail='" + mail + '\'' +
+                ", adresse='" + adresse + '\'' +
+                ", tel='" + tel + '\'' +
+                ", listeLocation=" + listeLocation +
+                '}';
     }
 
     public Long getNumLecteur() {
@@ -49,11 +62,11 @@ public class Lecteur {
         this.prenom = prenom;
     }
 
-    public Location getDateNaiss() {
+    public LocalDate getDateNaiss() {
         return dateNaiss;
     }
 
-    public void setDateNaiss(Location dateNaiss) {
+    public void setDateNaiss(LocalDate dateNaiss) {
         this.dateNaiss = dateNaiss;
     }
 
