@@ -203,7 +203,7 @@ public class Gestion {
                             byte nbrePlages= sc.nextByte();
                             LocalTime dureeTotale = Utilitaire.lecTime();
                             o=new CD(titre,ageMin,dp,ploc,langue,genre,code,nbrePlages,dureeTotale);
-                            ;break;
+                            break;
                 case 3 :
                             System.out.println("code : ");
                             code= sc.nextLong();
@@ -217,15 +217,21 @@ public class Gestion {
                                 if(choix==langues.size())break;
                                 if(!langues.get(choix-1).equals(o.getLangue())){
                                     ((DVD)o).getAutresLangues().add(langues.get(choix-1));
+                                }else{
+                                    System.out.println(" c'est déja langue d'origine ");
                                 }
                             }while(true);
                            System.out.println("sous-titres");
                             do{
                              choix=Utilitaire.choixListe(langues);
                              if(choix==langues.size())break;
-                             ((DVD)o).getSousTitres().add(langues.get(choix-1));//TODO vérifier unicité ou utiliser set
+                             if(!langues.get(choix-1).equals(o.getLangue())){
+                                 ((DVD)o).getSousTitres().add(langues.get(choix-1));
+                             }else{
+                                 System.out.println("c'est déja la langue d'origine");
+                             }
                              }while(true);
-                            ;break;
+                            break;
             }
            louv.add(o);
         System.out.println("ouvrage créé");
