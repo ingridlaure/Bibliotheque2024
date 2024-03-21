@@ -215,7 +215,9 @@ public class Gestion {
                             do{
                                 choix=Utilitaire.choixListe(langues);
                                 if(choix==langues.size())break;
-                                ((DVD)o).getAutresLangues().add(langues.get(choix-1));//TODO vérifier unicité ou utiliser set et pas de doublon avec langue d'origine
+                                if(!langues.get(choix-1).equals(o.getLangue())){
+                                    ((DVD)o).getAutresLangues().add(langues.get(choix-1));
+                                }
                             }while(true);
                            System.out.println("sous-titres");
                             do{
