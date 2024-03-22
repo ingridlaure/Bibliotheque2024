@@ -249,7 +249,7 @@ public class Gestion {
         }
         int choixa = Utilitaire.choixListe(laut);
             if (o != null) {
-                o.addAuteur(laut.get(choix - 1));
+                o.addAuteur(laut.get(choixa - 1));
             }
         louv.add(o);
         System.out.println("ouvrage créé");
