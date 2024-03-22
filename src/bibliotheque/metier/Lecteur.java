@@ -128,9 +128,7 @@ public class Lecteur {
     public List<Exemplaire> listerExemplairesEnLoues() {
         List<Exemplaire> lex = new ArrayList<>();
         for(Location loc:lloc){
-            if (!loc.getExemplaire().enLocation()) {
                 lex.add(loc.getExemplaire());
-            }
         }
         return lex;
     }
