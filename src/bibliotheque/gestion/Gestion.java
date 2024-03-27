@@ -259,6 +259,7 @@ public class Gestion {
         System.out.println("ouvrage créé");
          choix = choixListe(laut);
         o.addAuteur(laut.get(choix-1));
+        
         //TODO attribuer auteurs par boucle, les auteur sont triés par ordre de nom et prénom,
         // ne pas proposer un auteur déjà présent dans la liste des auteurs de cet ouvrage
     }
