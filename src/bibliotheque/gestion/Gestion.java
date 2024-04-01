@@ -120,8 +120,14 @@ public class Gestion {
 
     private void gestLocations() {
         int choix;
-        //TODO ne lister que les exemplaires libres et les trier par matricule
-        choix =choixListe(lex);
+        List<Exemplaire> llist=new ArrayList<>();
+        for(Exemplaire ex:lex){
+            if(!ex.enLocation()){
+                llist.add(ex);
+            }
+        }
+        Collections.sort(llist);
+        choix =choixListe(llist);
         if(lex.get(choix).enLocation()){
             System.out.println("exemplaire en location");
             return;
