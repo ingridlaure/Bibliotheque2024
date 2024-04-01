@@ -2,7 +2,7 @@ package bibliotheque.metier;
 
 import java.util.*;
 
-public class Rayon {
+public class Rayon implements Comparable {
     private String codeRayon;
     private String genre;
     private Set<Exemplaire> lex = new HashSet<>();
@@ -71,4 +71,9 @@ public class Rayon {
     }
 
 
+    @Override
+    public int compareTo(Object o) {
+        Rayon r=(Rayon)o;
+        return (r.codeRayon.compareTo(this.codeRayon));
+    }
 }
