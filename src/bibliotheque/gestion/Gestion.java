@@ -7,10 +7,7 @@ import bibliotheque.utilitaires.LivreFactoryBeta;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import static bibliotheque.utilitaires.Utilitaire.choixListe;
 
@@ -104,7 +101,21 @@ public class Gestion {
     }
 
     private void gestRestitution() {
-        //TODO lister exemplaires en location , choisir l'un d'entre eux, enregistrer sa restitution et éventuellement changer état
+        List<Location> llist=new ArrayList<>();
+        for(Location l : lloc){
+            if(l.getDateRestitution()==null){
+                llist.add(l);
+            }
+        }
+        int choix=choixListe(llist);
+        llist.get(choix-1).enregistrerRetour();
+        System.out.println("Voulez vous changez l'etat de l'exemplaire? O/N?");
+        String rep= sc.nextLine();
+        if(rep.equals("o")||rep.equals("O")){
+            System.out.println("Quel est le nouvel état");
+            String etat=sc.nextLine();
+            llist.get(choix-1).getExemplaire().setDescriptionEtat(etat);
+        }
     }
 
     private void gestLocations() {
