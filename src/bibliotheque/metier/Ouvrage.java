@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public abstract class Ouvrage {
+public abstract class Ouvrage implements Comparable {
     protected String titre;
     protected int ageMin;
     protected LocalDate dateParution;
@@ -147,5 +147,11 @@ public abstract class Ouvrage {
             if(ex.enLocation()==enLocation) lex2.add(ex);
         }
         return lex2;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Ouvrage ouv=(Ouvrage)o;
+        return ouv.getTitre().compareTo(this.getTitre());
     }
 }
