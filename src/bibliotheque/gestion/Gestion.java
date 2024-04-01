@@ -5,6 +5,7 @@ import bibliotheque.utilitaires.CDFactoryBeta;
 import bibliotheque.utilitaires.DVDFactoryBeta;
 import bibliotheque.utilitaires.LivreFactoryBeta;
 
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
@@ -20,7 +21,19 @@ public class Gestion {
     private List<Exemplaire> lex = new ArrayList<>();
     private List<Rayon> lrayon= new ArrayList<>();
     private List<Location> lloc = new ArrayList<>();
+    Comparator<Exemplaire> comparerParMatricule=new Comparator<Exemplaire>() {
+        @Override
+        public int compare(Exemplaire o1, Exemplaire o2) {
+            return o1.getMatricule().compareTo(o2.getMatricule());
+        }
+    };
 
+    Comparator<Exemplaire> comparerParTitre=new Comparator<Exemplaire>() {
+        @Override
+        public int compare(Exemplaire o1, Exemplaire o2) {
+            return o1.getOuvrage().getTitre().compareTo(o2.getOuvrage().getTitre());
+        }
+    };
 
     public void populate(){
         Auteur a = new Auteur("Verne","Jules","France");
@@ -126,7 +139,7 @@ public class Gestion {
                 llist.add(ex);
             }
         }
-        Collections.sort(llist);
+        Collections.sort(llist,comparerParMatricule);
         choix =choixListe(llist);
         if(lex.get(choix).enLocation()){
             System.out.println("exemplaire en location");
@@ -172,8 +185,21 @@ public class Gestion {
         Rayon r = new Rayon(code,genre);
         System.out.println("rayon créé");
         lrayon.add(r);
-        int  choix = choixListe(lex);
-        r.addExemplaire(lex.get(choix-1));
+        String rep;
+        do {
+            List<Exemplaire> llist = new ArrayList<>();
+            for (Exemplaire ex : lex) {
+                if (ex.getRayon() == null) {
+                    llist.add(ex);
+                }
+            }
+            Collections.sort(llist, comparerParTitre);
+            System.out.println("Exemplaire à ajouter : ");
+            int choix = choixListe(llist);
+            r.addExemplaire(llist.get(choix - 1));
+            System.out.println("Encore un exmplaire?");
+            rep=sc.nextLine();
+        }while(rep.equals("o")||rep.equals("O"));
         
         //TODO attribuer par une boucle plusieurs exemplaires, les exemplaires sont triés par ordre de titre de l'ouvrage ,
         //  ne proposer que les exemplaires qui ne sont pas dans déjà présents dans ce rayon et qui ne sont dans aucun autre rayon

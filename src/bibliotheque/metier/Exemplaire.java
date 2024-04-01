@@ -3,10 +3,11 @@ package bibliotheque.metier;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
-public class Exemplaire implements Comparable{
+public class Exemplaire {
 
     private String matricule;
     private String descriptionEtat;
@@ -152,9 +153,4 @@ public class Exemplaire implements Comparable{
     }
 
 
-    @Override
-    public int compareTo(Object o) {
-        Exemplaire ex=(Exemplaire)o;
-        return(ex.getMatricule().compareTo(this.matricule));
-    }
 }
