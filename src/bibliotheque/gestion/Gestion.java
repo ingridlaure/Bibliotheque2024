@@ -317,8 +317,15 @@ public class Gestion {
         o = lof.get(choix-1).create();*/
         louv.add(o);
         System.out.println("ouvrage créé");
-        choix = choixListe(laut);
-        o.addAuteur(laut.get(choix - 1));
+        List<Auteur> llist=new ArrayList<>();
+        for(Auteur aut: laut)
+        {
+            if(!o.getLauteurs().contains(aut)){
+                llist.add(aut);
+            }
+        }
+        choix = choixListe(llist);
+        o.addAuteur(llist.get(choix - 1));
 
         //TODO attribuer auteurs par boucle, les auteur sont triés par ordre de nom et prénom,
         // ne pas proposer un auteur déjà présent dans la liste des auteurs de cet ouvrage
@@ -349,9 +356,7 @@ public class Gestion {
             System.out.println("Encore un eouvrage?");
             rep = sc.nextLine();
         } while (rep.equals("o") || rep.equals("O"));
-        //TODO attribuer ouvrages par boucle
-        // les ouvrages sont triés par ordre de titre
-        // ne pas proposer un ouvrage déjà présent dans la liste des ouvrages de cet auteur
+
     }
 
     public static void main(String[] args) {
