@@ -3,7 +3,6 @@ package bibliotheque.metier;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -151,6 +150,7 @@ public class Exemplaire {
         if(l.getDateRestitution()==null) return true;
         return false;
     }
+
 
 
 }
