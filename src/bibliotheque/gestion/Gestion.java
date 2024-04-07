@@ -105,7 +105,11 @@ public class Gestion {
 
     private void gestRestitution() {
         //TODO lister exemplaires en location , choisir l'un d'entre eux, enregistrer sa restitution et éventuellement changer état
-        Set<Exemplaire> listex=lloc.keySet();
+        Set<Exemplaire> list=lloc.keySet();
+        List<Exemplaire> listex = new ArrayList<>();
+        for(Exemplaire ex:list){
+            listex.add(ex);
+        }
         int i=1,choix;
         for(Exemplaire l:listex){
             System.out.println(i+" - "+l);
@@ -113,9 +117,11 @@ public class Gestion {
         }
         System.out.println("Quel exemplaire souhaiter vous restituer");
         choix=sc.nextInt();
-        lloc.remove(lloc.get(listex));
         System.out.println("Voulez vous changez l'etat de l'exemplaire? O/N?");
         String rep= sc.nextLine();
+        listex.get(choix-1).setDescriptionEtat(rep);
+        lloc.remove(listex.get(choix-1));
+
     }
 
     private void gestLocations() {
