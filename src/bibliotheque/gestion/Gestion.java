@@ -20,7 +20,8 @@ public class Gestion {
     private List<Ouvrage> louv= new ArrayList<>();
     private List<Exemplaire> lex = new ArrayList<>();
     private List<Rayon> lrayon= new ArrayList<>();
-    private List<Location> lloc = new ArrayList<>();
+    public static final Map<Exemplaire,Lecteur> lloc=new HashMap<>();
+   // private List<Location> lloc = new ArrayList<>();
 
 
     public void populate(){
@@ -73,14 +74,15 @@ public class Gestion {
         llect.add(lec);
 
         Location loc = new Location(LocalDate.of(2023,2,1),LocalDate.of(2023,3,1),lec,e);
-        lloc.add(loc);
+        lloc.put(e,lec);
         loc.setDateRestitution(LocalDate.of(2023,2,4));
 
         lec = new Lecteur(1,"Durant","Aline",LocalDate.of(1980,10,10),"Binche","aline.durant@mail.com","045874444");
         llect.add(lec);
 
         loc = new Location(LocalDate.of(2023,2,5),LocalDate.of(2023,3,5),lec,e);
-        lloc.add(loc);
+        lloc.put(e,lec);
+
     }
 
     private void menu() {
@@ -103,6 +105,17 @@ public class Gestion {
 
     private void gestRestitution() {
         //TODO lister exemplaires en location , choisir l'un d'entre eux, enregistrer sa restitution et éventuellement changer état
+        Set<Exemplaire> listex=lloc.keySet();
+        int i=1,choix;
+        for(Exemplaire l:listex){
+            System.out.println(i+" - "+l);
+            i++;
+        }
+        System.out.println("Quel exemplaire souhaiter vous restituer");
+        choix=sc.nextInt();
+        lloc.remove(lloc.get(listex));
+        System.out.println("Voulez vous changez l'etat de l'exemplaire? O/N?");
+        String rep= sc.nextLine();
     }
 
     private void gestLocations() {
@@ -119,7 +132,7 @@ public class Gestion {
         choix=choixListe(llect);
         if(choix==0)return;
         Lecteur lec = llect.get(choix-1);
-        lloc.add(new Location(lec,ex));
+        lloc.put(ex,lec);
     }
 
     private void gestLecteurs() {
