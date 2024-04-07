@@ -78,10 +78,6 @@ public class Exemplaire {
         this.rayon.getLex().add(this);
     }
 
-
-
-
-
     @Override
     public String toString() {
         return "Exemplaire{" +

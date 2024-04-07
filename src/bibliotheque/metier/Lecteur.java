@@ -13,7 +13,6 @@ public class Lecteur {
     private String mail;
     private String tel;
 
-    private List<Location> lloc=new ArrayList<>();
 
     public Lecteur(int numlecteur, String nom, String prenom, LocalDate dn, String adresse, String mail, String tel) {
         this.numlecteur = numlecteur;
@@ -81,14 +80,6 @@ public class Lecteur {
         this.tel = tel;
     }
 
-    public List<Location> getLloc() {
-        return lloc;
-    }
-
-    public void setLloc(List<Location> lloc) {
-        this.lloc = lloc;
-    }
-
     @Override
     public String toString() {
         return "Lecteur{" +
@@ -101,7 +92,6 @@ public class Lecteur {
                 ", tel='" + tel + '\'' +
                 '}';
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -115,20 +105,6 @@ public class Lecteur {
         return Objects.hash(numlecteur);
     }
 
-    public List<Exemplaire> listerExemplairesEnLocation(){
-        List<Exemplaire> lex = new ArrayList<>();
-        for(Location loc : lloc){
-            if(loc.getDateRestitution()!=null)lex.add(loc.getExemplaire());
-        }
-        return lex;
-    }
 
-    public List<Exemplaire> listerExemplairesLoues(){
-        List<Exemplaire> lex = new ArrayList<>();
-        for(Location loc : lloc){
-            lex.add(loc.getExemplaire());
-            //TODO empêcher doublon si exemplaire loué plusieurs fois par même lecteur
-        }
-       return lex;
-    }
+
 }
