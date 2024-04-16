@@ -92,16 +92,16 @@ public class ExemplaireViewConsole  extends AbstractViewExemplaire{
 
 
     public void ajouter() {
-        Auteur a;
+        Exemplaire e;
         do {
             try {
-                System.out.println("nom ");
-                String nom = sc.nextLine();
-                System.out.println("prénom ");
-                String prenom = sc.nextLine();
-                System.out.println("nationalité");
-                String nat = sc.nextLine();
-                a = new Auteur(nom, prenom, nat);
+                System.out.println("matricule ");
+                String matricule = sc.nextLine();
+                System.out.println("état");
+                String etat = sc.nextLine();
+                System.out.println("ouvrage");
+                String ouvrage = sc.nextLine();
+                e= new Exemplaire(matricule,etat);
                 break;
             } catch (Exception e) {
                 System.out.println("une erreur est survenue : "+e.getMessage());
