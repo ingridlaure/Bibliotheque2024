@@ -1,13 +1,8 @@
 package bibliotheque.metier;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-import bibliotheque.gestion.Gestion;
 
-import static bibliotheque.gestion.Gestion.lloc;
+import static bibliotheque.gestion.GestionOld.LOCATIONS;
 
 public class Exemplaire {
 
@@ -20,13 +15,15 @@ public class Exemplaire {
     private String etat;
 
 
-
     public Exemplaire(String matricule, String descriptionEtat,Ouvrage ouvrage){
         this.matricule = matricule;
         this.descriptionEtat=descriptionEtat;
         this.ouvrage = ouvrage;
 
         this.ouvrage.getLex().add(this);
+    }
+    public Exemplaire(String matricule){
+        this.matricule=matricule;
     }
 
     @Override
@@ -93,22 +90,17 @@ public class Exemplaire {
     }
 
     public Lecteur lecteurActuel(){
-        if(enLocation()) return lloc.get(this);
+        if(enLocation()) return LOCATIONS.get(this);
         return null;
     }
-
 
     public void envoiMailLecteurActuel(Mail mail){
         if(lecteurActuel()!=null) System.out.println("envoi de "+mail+ " à "+lecteurActuel().getMail());
         else System.out.println("aucune location en cours");
     }
 
+
     public boolean enLocation(){
-        if(lloc.isEmpty()) return false;
-        if(lloc.containsKey(this)) return true;
-        else return false;
+        return LOCATIONS.get(this) !=null ;
     }
-
-
-
 }

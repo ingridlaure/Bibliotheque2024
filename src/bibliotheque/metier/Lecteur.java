@@ -80,7 +80,7 @@ public class Lecteur {
         this.tel = tel;
     }
 
-    @Override
+        @Override
     public String toString() {
         return "Lecteur{" +
                 "numlecteur=" + numlecteur +
@@ -92,6 +92,7 @@ public class Lecteur {
                 ", tel='" + tel + '\'' +
                 '}';
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -104,7 +105,5 @@ public class Lecteur {
     public int hashCode() {
         return Objects.hash(numlecteur);
     }
-
-
 
 }
