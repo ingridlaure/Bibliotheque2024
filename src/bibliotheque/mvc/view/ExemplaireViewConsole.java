@@ -1,15 +1,10 @@
 package bibliotheque.mvc.view;
 
-import bibliotheque.metier.Exemplaire;
-import bibliotheque.metier.Mail;
-import bibliotheque.metier.Ouvrage;
-import bibliotheque.metier.Rayon;
+import bibliotheque.metier.*;
 import bibliotheque.mvc.GestionMVC;
 import bibliotheque.mvc.controller.ControllerSpecialExemplaire;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+
+import java.util.*;
 
 
 import static bibliotheque.utilitaires.Utilitaire.*;
@@ -169,7 +164,19 @@ public class ExemplaireViewConsole extends AbstractView<Exemplaire> {
    }
 
     private void louer(Exemplaire a) {
-        //TODO chosir un lecteur et enregistrer la location dans LOCATIONS
+        List<Lecteur> le=new ArrayList<>();
+        le=GestionMVC.lv.getAll();
+        le.sort(new Comparator<Lecteur>() {
+            @Override
+            public int compare(Lecteur o1, Lecteur o2) {
+                return o1.getNom().compareTo(o2.getNom());
+            }
+        });
+        int ch=choixListe(le);
+        GestionMVC.LOCATIONS.put(a,le.get(ch));
+
+
+        //ancienTODO chosir un lecteur et enregistrer la location dans LOCATIONS
     }
 
 
