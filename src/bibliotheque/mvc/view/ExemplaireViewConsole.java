@@ -109,12 +109,19 @@ public class ExemplaireViewConsole extends AbstractView<Exemplaire> {
                         return o1.getTitre().compareTo(o2.getTitre());
                     }
                 });
-                //TODO présenter les ouvrages par ordre de titre ==> classe anonyme
+                /*ancienTodo présenter les ouvrages par ordre de titre ==> classe anonyme*/
                 int ch = choixListe(lo);
                 a = new Exemplaire(mat, descr,lo.get(ch-1));
                 System.out.println("rayon");
                 List<Rayon> lr = GestionMVC.rv.getAll();
-                //TODO présenter les rayons par ordre de code ==> classe anonyme
+
+                //ancienTODO présenter les rayons par ordre de code ==> classe anonyme
+                lr.sort(new Comparator<Rayon>() {
+                    @Override
+                    public int compare(Rayon o1, Rayon o2) {
+                        return o1.getCodeRayon().compareTo(o2.getCodeRayon());
+                    }
+                });
                 ch= choixListe(lr);
                 a.setRayon(lr.get(ch-1));
                 break;
