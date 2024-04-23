@@ -58,6 +58,20 @@ public class OuvrageViewConsole extends AbstractView<Ouvrage> {
 
 
     public void rechercher() {
+
+        TypeOuvrage[] tto = TypeOuvrage.values();
+        List<TypeOuvrage> lto = new ArrayList<>(Arrays.asList(tto));
+        int choix = Utilitaire.choixListe(lto);
+        switch (choix){
+            case 1:
+                System.out.println("code ISBN : ");
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+
+        }
         //TODO rechercher ouvrage en demandant type d'ouvrage, puis l'info unique relative à au type recherché
     }
 
